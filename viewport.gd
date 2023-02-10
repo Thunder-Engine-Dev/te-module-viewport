@@ -11,6 +11,9 @@ func _ready() -> void:
 		vp.add_child.call_deferred(Thunder._current_stage)
 		_update_view()
 	)
+	
+	Audio._calculate_player_position = func(ref: Node2D) -> Vector2:
+		return ref.global_position - vp.get_camera_2d().global_position + Vector2(vp.size / 2)
 
 func _on_window_resized():
 	_update_view()
