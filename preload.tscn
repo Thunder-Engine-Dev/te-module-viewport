@@ -5,6 +5,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_aijpq"]
 shader = ExtResource("1_sowlm")
+shader_parameter/enable = true
 
 [node name="ViewportContainer" type="SubViewportContainer"]
 material = SubResource("ShaderMaterial_aijpq")
@@ -20,5 +21,3 @@ handle_input_locally = false
 snap_2d_transforms_to_pixel = true
 size = Vector2i(640, 480)
 render_target_update_mode = 4
-
-[connection signal="resized" from="." to="." method="_on_window_resized"]
