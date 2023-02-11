@@ -4,15 +4,12 @@ extends SubViewportContainer
 
 func _ready() -> void:
 	resized.connect(_on_window_resized)
-	#get_tree().root.audio_listener_enable_2d = false
-	
-	#Scenes.install_scene()
-	#
+
 	add_viewport.call_deferred()
 	Scenes.scene_changed_notification.connect(add_viewport)
 	
-	#Audio._calculate_player_position = func(ref: Node2D) -> Vector2:
-	#	return ref.global_position - vp.get_camera_2d().global_position + Vector2(vp.size / 2)
+	Audio._calculate_player_position = func(ref: Node2D) -> Vector2:
+		return ref.global_position - vp.get_camera_2d().global_position + Vector2(vp.size / 2)
 
 func add_viewport():
 	if !Scenes.current_scene: return
