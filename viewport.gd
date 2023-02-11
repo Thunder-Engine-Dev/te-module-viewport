@@ -8,8 +8,7 @@ func _ready() -> void:
 	add_viewport.call_deferred()
 	Scenes.scene_changed_notification.connect(add_viewport)
 	
-	Audio._calculate_player_position = func(ref: Node2D) -> Vector2:
-		return ref.global_position - vp.get_camera_2d().global_position + Vector2(vp.size / 2)
+	_update_sound_function()
 
 func add_viewport():
 	if !Scenes.current_scene: return
@@ -18,6 +17,7 @@ func add_viewport():
 	vp.add_child.call_deferred(Scenes.current_scene)
 	Scenes.current_root = vp
 	_update_view()
+
 
 func _on_window_resized():
 	_update_view()
@@ -32,3 +32,9 @@ func _update_view() -> void:
 	material.set_shader_parameter(&"enable", scale.y != 1)
 	vp.size.x = 480 * (float(window_size.x) / float(window_size.y))
 	
+	_update_sound_function()
+
+func _update_sound_function() -> void:
+	var window_size = DisplayServer.window_get_size()
+	Audio._calculate_player_position = func(ref: Node2D) -> Vector2:
+		return ref.global_position - vp.get_camera_2d().global_position + Vector2(window_size / 2)
