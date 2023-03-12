@@ -6,7 +6,6 @@ func _ready() -> void:
 	resized.connect(_on_window_resized)
 
 	add_viewport.call_deferred()
-	Scenes.scene_changed_notification.connect(add_viewport)
 	
 	_update_sound_function()
 
