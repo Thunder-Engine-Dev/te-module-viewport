@@ -15,7 +15,7 @@ func add_viewport():
 	if !Scenes.current_scene.is_inside_tree(): return
 	get_tree().root.remove_child.call_deferred(Scenes.current_scene)
 	vp.add_child.call_deferred(Scenes.current_scene)
-	Scenes.current_root = vp
+	Scenes._current_root = vp
 	_update_view()
 
 
