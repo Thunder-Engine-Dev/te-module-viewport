@@ -36,4 +36,4 @@ func _update_view() -> void:
 func _update_sound_function() -> void:
 	var window_size = DisplayServer.window_get_size()
 	Audio._calculate_player_position = func(ref: Node2D) -> Vector2:
-		return ref.global_position - vp.get_camera_2d().global_position + Vector2(window_size / 2)
+		return ref.global_position - Thunder._current_camera.global_position + Vector2(window_size / 2)
